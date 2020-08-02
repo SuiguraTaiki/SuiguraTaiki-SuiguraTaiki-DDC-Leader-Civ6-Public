@@ -6,7 +6,7 @@
 --Everytime in greentext that "(?)" shows up, i have no clue if it actually works as i think it should, if at all.
 --What i want to do here is to allow newly created units to, if they are made within a city with a DISTRICT_ENCAMPMENT, to trigger a check, and if it passes, it gains an ability. More on that below.
 --------------------------------------------------------------
-AddEventHandler ("UnitAddedToMap", "Suigura_UA_UnitAddedToMap")  -- Does this allow me to check if a unit is added to map, then trigger the function below? i have no clue how to even start this thing. (?)
+AddEventHandler ("UnitAddedToMap", "Suigura_UA_UnitAddedToMap")  -- Does this allow me to check if a unit is added to map, then trigger the function below? i have no clue how to even start/trigger this script. (?)
 
 function Suigura_UA_UnitAddedToMap(iPlayerID, iUnitID, iCityID)	-- Just spitballing here, no clue if it would work.
 local pPlayer = Players(iPlayerID);	-- Checks the player's ID number
@@ -23,8 +23,8 @@ if (lPlayer ~= "LEADER_SUIGURA_DUQUEDECAXIAS" true) then return end	-- Checks if
 
 			if (pCity:GetID():GetDistrict(DISTRICT_ENCAMPMENT) == true) then	-- Checks if said city has an encampment district within it. If true, then runs script below. Otherwise abort.(?)
 
-				local pUnitAbility = pUnit:GetAbility();	-- Checks all abilities?
-				local iCurrentCount = pUnitAbility:GetAbilityCount("ABILITY_SUIGURA_DUQUEDECAXIAS_UA_IGNORE_JWM");	-- Checks the count on the ability i've made in another file. Not sure how it works exactly, followed an advice(?)
+				local pUnitAbility = pUnit:GetAbility();	-- Checks all abilities. (?)
+				local iCurrentCount = pUnitAbility:GetAbilityCount("ABILITY_SUIGURA_DUQUEDECAXIAS_UA_IGNORE_JWM");	-- Checks the count on the ability i've made in another file. Not sure how it works exactly, was following an advice(?)
 				print("iCurrentCount: " .. iCurrentCount);
 
 				if (iCurrentCount<=0) then
@@ -38,13 +38,12 @@ if (lPlayer ~= "LEADER_SUIGURA_DUQUEDECAXIAS" true) then return end	-- Checks if
 					print("Done altering ability");
 				end		-- If the value of iCurrentCount is more than 0, then it subtracts 1. The point is to make it == 1 (?)
 
-				iCurrentCount = pUnitAbility:GetAbilityCount("ABILITY_SUIGURA_DUQUEDECAXIAS_UA_IGNORE_JWM"); --		does this give the ability "ABILITY_SUIGURA_DUQUEDECAXIAS_UA_IGNORE_JWM" to the unit?(?)
+				iCurrentCount = pUnitAbility:GetAbilityCount("ABILITY_SUIGURA_DUQUEDECAXIAS_UA_IGNORE_JWM"); --		Checks the value of iCurrentCount
 				print("iCurrentCount: " .. iCurrentCount);
-				if (iCurrentCount == "1") then
-					pUnit=Give
-			
+				if (iCurrentCount == "1") then -- If iCurrentCount = 1, i want to give the unit the ability if it doesn't have it, or to activate it. Don't know how to proceed, so i'm leaving this blank for now.
+		
 				end
 			end
 		end
 	end
-	Events.UnitAddedToMap.Add(Suigura_UA_UnitAddedToMap);	 --NGL i'm completely lost
+Events.UnitAddedToMap.Add(Suigura_UA_UnitAddedToMap);	 --NGL i'm completely lost. i don't know how to run this to see what its doing
